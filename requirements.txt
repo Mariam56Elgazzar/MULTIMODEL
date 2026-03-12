@@ -31,3 +31,5 @@ transformers>=4.35.0  # For better embeddings
 torch>=2.0.0  # For embeddings
 
 pdfplumber
+langchain-core>=0.3.0
+langchain-groq>=0.2.0

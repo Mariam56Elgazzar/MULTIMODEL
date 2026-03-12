@@ -20,6 +20,7 @@ import sys
 import io
 import os
 from multimodel_rag.retrieval import vector_store
+
 # Force UTF-8 encoding
 if sys.stdout.encoding != 'utf-8':
     sys.stdout = io.TextIOWrapper(
@@ -50,7 +51,7 @@ from pathlib import Path
 from typing import Dict, Any, List
 
 from multimodel_rag.core.system import EnhancedRAGSystem, EnhancedRAGConfig
-
+enable_equation_ocr = st.checkbox("Enable equation OCR", value=True)
 # Configure logging
 logging.basicConfig(
     level=logging.INFO,
@@ -201,6 +202,9 @@ if 'current_query' not in st.session_state:
 
 def initialize_system(api_key: str) -> bool:
     """Initialize RAG system"""
+    config = EnhancedRAGConfig()
+    config.groq_api_key = api_key
+    config.enable_equation_ocr = enable_equation_ocr
     try:
         config = EnhancedRAGConfig()
         config.groq_api_key = api_key
