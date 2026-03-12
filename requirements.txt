@@ -1,0 +1,33 @@
+# ═══════════════════════════════════════════════════════════════════════════
+#  Enhanced RAG System V3.0 - Requirements
+# ═══════════════════════════════════════════════════════════════════════════
+
+
+# PDF Processing
+PyMuPDF>=1.23.0
+pillow>=10.0.0
+
+# Vector Store & Embeddings
+faiss-cpu>=1.7.4
+sentence-transformers>=2.2.2
+numpy>=1.24.0
+
+# LLM & API
+groq>=0.4.0
+python-dotenv>=1.0.0
+
+# Retrieval Enhancement
+rank-bm25>=0.2.2
+
+# Web Framework
+streamlit>=1.28.0
+
+# Utilities
+tqdm>=4.66.0
+pandas>=2.0.0
+
+# Optional (for better results)
+transformers>=4.35.0  # For better embeddings
+torch>=2.0.0  # For embeddings
+
+pdfplumber

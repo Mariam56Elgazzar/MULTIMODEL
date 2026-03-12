@@ -1,0 +1,49 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Create venv",
+      "type": "shell",
+      "command": "python3 -m venv .venv"
+    },
+    {
+      "label": "Install deps",
+      "type": "shell",
+      "command": ". .venv/bin/activate && pip install -U pip && pip install -r requirements.txt",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "dependsOn": "Create venv"
+    },
+    {
+      "label": "Run app",
+      "type": "shell",
+      "command": ". .venv/bin/activate && PYTHONPATH=src streamlit run app.py",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "dependsOn": "Install deps",
+      "problemMatcher": []
+    },
+    {
+      "label": "Run diagnostics",
+      "type": "shell",
+      "command": ". .venv/bin/activate && PYTHONPATH=src python scripts/check_system.py",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "dependsOn": "Install deps",
+      "problemMatcher": []
+    },
+    {
+      "label": "Run tests",
+      "type": "shell",
+      "command": ". .venv/bin/activate && PYTHONPATH=src pytest -q",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "dependsOn": "Install deps",
+      "problemMatcher": []
+    }
+  ]
+}
